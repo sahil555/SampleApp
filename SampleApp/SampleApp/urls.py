@@ -14,8 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from sample.views import  auctionview, auctionlist, createbid
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auctionlist/', auctionlist, name='Auction List'),
+    path('bidlist/', auctionview, name='Bid List'),
+    path('auth/', include('rest_framework.urls')),
+
+    path('createbid/', createbid, name='Create Bid')
+
+
 ]
